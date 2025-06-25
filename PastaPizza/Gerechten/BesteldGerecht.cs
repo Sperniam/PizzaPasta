@@ -15,8 +15,7 @@ public class BesteldGerecht : IBedrag
     {
         Gerecht = gerecht;
         Grootte = grootte;
-        Extras = new List<Extras>();
-
+        Extras = new List <Extras>();
     }
 
     public BesteldGerecht(Gerecht gerecht, List<Extras> extras, Grootte grootte)
@@ -30,15 +29,14 @@ public class BesteldGerecht : IBedrag
     {
         string extrasStr=" ";
 
-        if (Extras != null)
+        if (Extras.Count > 0)
         {
             foreach (Extras extra in Extras)
             {
                 extrasStr += extra + " ";
-                return $"{Gerecht} ({Grootte}) extra: {extrasStr} (bedrag: {BerekenBedrag()} euro)";
             }  
-        }
-        
+            return $"{Gerecht} ({Grootte}) extra:{extrasStr} (bedrag: {BerekenBedrag()} euro)";
+        } 
         return $"{Gerecht} ({Grootte}) (bedrag: {BerekenBedrag()} euro)";
     }
 

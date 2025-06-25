@@ -12,3 +12,4 @@ C:\Users\flori\RiderProjects\PastaPizza\PastaPizza\obj\Debug\net9.0\refint\Pasta
 C:\Users\flori\RiderProjects\PastaPizza\PastaPizza\obj\Debug\net9.0\PastaPizza.pdb
 C:\Users\flori\RiderProjects\PastaPizza\PastaPizza\obj\Debug\net9.0\PastaPizza.genruntimeconfig.cache
 C:\Users\flori\RiderProjects\PastaPizza\PastaPizza\obj\Debug\net9.0\ref\PastaPizza.dll
+C:\Users\flori\RiderProjects\PastaPizza\PastaPizza\obj\Debug\net9.0\PastaPizza.sourcelink.json
