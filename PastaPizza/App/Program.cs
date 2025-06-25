@@ -1,0 +1,75 @@
+﻿using PastaPizza;
+using PastaPizza.Bestellingen;
+using PastaPizza.Desserten;
+using PastaPizza.Dranken;
+using PastaPizza.Klanten;
+
+
+
+Console.WriteLine("Alle Bestelingen");
+Console.WriteLine("******************************************************************************");
+
+int bestelNr = 1;
+
+//Bestelling 1
+List<string> onderdelen = new List<string>();
+onderdelen.Add("Tomatensaus");
+onderdelen.Add("Mozzarella");
+
+List<Extras> extras = new List<Extras>();
+extras.Add(Extras.Kaas);
+extras.Add(Extras.Look);
+
+Klant klant1 = new Klant("Jan Janssen");
+Gerecht pizza = new Pizza(onderdelen,naam:"Pizza Margheritta",8);
+BesteldGerecht gerecht1 = new BesteldGerecht(pizza,extras,Grootte.Groot);
+Drank drank1 = new Frisdrank(PastaPizza.Dranken.DrankEnum.Drank.Water);
+Dessert dessert1 = new Dessert(PastaPizza.DessertenEnum.Dessert.Tiramisu);
+
+
+Bestelling bestelling1 = new Bestelling(klant1,gerecht1,drank1,dessert1,2);
+
+//--------------------------------------------------------------------------------------------
+
+//Bestelling 2
+
+Klant klant2 = new Klant("Piet Peeters");
+
+Gerecht gerecht2 = pizza;
+List<Extras> extras2 = new List<Extras>();
+
+BesteldGerecht besteldGerecht2 = new BesteldGerecht(gerecht2,Grootte.Klein);
+Drank drank2 = new Frisdrank(PastaPizza.Dranken.DrankEnum.Drank.Water);
+Dessert dessert2 = new Dessert(PastaPizza.DessertenEnum.Dessert.Ijs);
+
+
+
+Bestelling bestelling2 = new Bestelling(klant2,besteldGerecht2,drank2,dessert2);
+
+
+
+
+
+List<Bestelling> bestellingen = new List<Bestelling>(); // Lijst van Alle bestelling (moet nog testdata toevoegen)
+bestellingen.Add(bestelling1);
+bestellingen.Add(bestelling2);
+
+foreach (Bestelling bestelling in bestellingen) // Alle bestellingen van iedereen
+{
+    Console.WriteLine($"Bestelling {bestelNr++}:");
+    Console.WriteLine($"{bestelling}\n");
+}
+
+
+
+Console.WriteLine("-----------------------------------------------------------------------------------------------");
+Console.WriteLine("Bestellingen van de klant Jan Janssen"); // Enkel Jan Janssen
+Console.WriteLine("******************************************************************************");
+
+//Enkel Jan Janssen
+foreach (Bestelling bestelling in bestellingen)
+{
+    var enkelJan = bestelling.Klant.Naam.Equals("Jan Janssen");
+    if (enkelJan)
+        Console.WriteLine(bestelling);
+}
