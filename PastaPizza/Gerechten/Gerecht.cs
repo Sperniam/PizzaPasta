@@ -1,6 +1,6 @@
 ﻿using PastaPizza.Bestellingen;
 
-namespace PastaPizza;
+namespace PastaPizza.Gerechten;
 
 public abstract class Gerecht : IBedrag
 {

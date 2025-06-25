@@ -1,7 +1,6 @@
-﻿
-using System.Security.Principal;
-using PastaPizza;
-using PastaPizza.Bestellingen;
+﻿using PastaPizza.Bestellingen;
+using PastaPizza.Gerechten.GerechtEnums;
+namespace PastaPizza.Gerechten;
 
 public class BesteldGerecht : IBedrag
 {
@@ -24,6 +23,8 @@ public class BesteldGerecht : IBedrag
         Extras = extras;
         Grootte = grootte;
     }
+    
+    
 
     public override string ToString()
     {
@@ -42,7 +43,7 @@ public class BesteldGerecht : IBedrag
 
     public double BerekenBedrag()
     {
-        double prijs = Gerecht.Prijs;
+        double prijs = Gerecht.BerekenBedrag();
 
         foreach (var v in Extras)
         {

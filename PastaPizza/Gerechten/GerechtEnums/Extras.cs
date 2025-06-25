@@ -1,4 +1,4 @@
-﻿namespace PastaPizza;
+﻿namespace PastaPizza.Gerechten.GerechtEnums;
 
 public enum Extras
 {

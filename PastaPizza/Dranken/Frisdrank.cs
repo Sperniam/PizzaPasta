@@ -6,7 +6,8 @@ public class Frisdrank : Drank
     public Frisdrank(DrankEnum.Drank drank)
     {
         NaamDrank = drank;
-        Prijs = 2;
+        Prijs = 2
+            ;
     }
 
 

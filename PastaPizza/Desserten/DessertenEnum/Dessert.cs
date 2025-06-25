@@ -1,4 +1,4 @@
-﻿namespace PastaPizza.DessertenEnum;
+﻿namespace PastaPizza.Desserten.DessertenEnum;
 
 public enum Dessert
 {

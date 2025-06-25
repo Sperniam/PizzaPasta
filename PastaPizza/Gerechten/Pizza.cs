@@ -1,4 +1,4 @@
-﻿namespace PastaPizza;
+﻿namespace PastaPizza.Gerechten;
 
 public class Pizza : Gerecht
 {
@@ -21,7 +21,7 @@ public class Pizza : Gerecht
         }
 
         onderdelenLijst = onderdelenLijst.Remove(onderdelenLijst.Length - 2);        
-        return $"{Naam} ({Prijs} euro) {onderdelenLijst}";
+        return $"{Naam} ({BerekenBedrag()} euro) {onderdelenLijst}";
     }
 
     public override double BerekenBedrag()
