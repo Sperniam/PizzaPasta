@@ -1,6 +1,5 @@
-﻿using PastaPizza.Gerechten;
-
-namespace PastaPizza.Bestellingen;
+﻿namespace PastaPizza.Bestellingen;
+using Gerechten;
 using Dranken;
 using Klanten;
 using Desserten;
@@ -34,7 +33,14 @@ public class Bestelling : IBedrag
         Dranken = dranken;
         Aantal = aantal;
     }
-    
+
+    public Bestelling(Klant klant, Dessert dessert, int aantal = 1)
+    {
+        Klant = klant;
+        Dessert = dessert;
+        Aantal = aantal;
+    }
+
 
     public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, Dessert dessert, int aantal = 1)
     {
@@ -42,6 +48,21 @@ public class Bestelling : IBedrag
         BesteldGerecht = besteldGerecht;
         Dranken = dranken;
         Dessert = dessert;
+        Aantal = aantal;
+    }
+
+    public Bestelling(Klant klant, Drank dranken, Dessert dessert, int aantal = 1)
+    {
+        Klant = klant;
+        Dranken = dranken;
+        Dessert = dessert;
+        Aantal = aantal;
+    }
+
+    public Bestelling(Klant klant, Drank dranken, int aantal = 1)
+    {
+        Klant = klant;
+        Dranken = dranken;
         Aantal = aantal;
     }
 

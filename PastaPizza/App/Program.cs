@@ -94,6 +94,26 @@ Bestelling bestelling5 = new Bestelling(klant1,besteldGerecht5,drank5);
 
 
 //Bestelling 6
+Gerecht gerecht6 = new Pasta("Spaghetti Bolognese", 12);
+Drank drank6 = new Frisdrank(PastaPizza.Dranken.DrankEnum.Drank.Cocacola);
+Dessert dessert6 = new Dessert(PastaPizza.Desserten.DessertenEnum.Dessert.Cake);
+BesteldGerecht besteldGerecht6 = new BesteldGerecht(gerecht6,Grootte.Groot);
+
+Bestelling bestelling6 = new Bestelling(klant2,besteldGerecht6,drank6,dessert6);
+//--------------------------------------------------------------------------------------------
+
+
+//Bestelling 7
+Drank drank7 = new Warmedrank(PastaPizza.Dranken.DrankEnum.Drank.Koffie);
+Bestelling bestelling7 = new Bestelling(klant2,drank7,3);
+//--------------------------------------------------------------------------------------------
+
+
+//Bestelling 8
+Dessert dessert8 = new Dessert(PastaPizza.Desserten.DessertenEnum.Dessert.Tiramisu);
+Bestelling bestelling8 = new Bestelling(klant1, dessert8);
+
+
 
 
 List<Bestelling> bestellingen = new List<Bestelling>(); // Lijst van Alle bestelling (moet nog testdata toevoegen)
@@ -102,6 +122,9 @@ bestellingen.Add(bestelling2);
 bestellingen.Add(bestelling3);
 bestellingen.Add(bestelling4);
 bestellingen.Add(bestelling5);
+bestellingen.Add(bestelling6);
+bestellingen.Add(bestelling7);
+bestellingen.Add(bestelling8);
 
 foreach (Bestelling bestelling in bestellingen) // Alle bestellingen van iedereen
 {
