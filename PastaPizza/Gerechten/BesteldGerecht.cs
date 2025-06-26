@@ -29,7 +29,7 @@ public class BesteldGerecht : IBedrag
     public override string ToString()
     {
         string extrasStr=" ";
-
+        
         if (Extras.Count > 0)
         {
             foreach (Extras extra in Extras)
@@ -45,10 +45,7 @@ public class BesteldGerecht : IBedrag
     {
         double prijs = Gerecht.BerekenBedrag();
 
-        foreach (var v in Extras)
-        {
-            prijs += 1;
-        }
+        prijs += Extras.Count;
 
         if (Grootte == Grootte.Groot)
         {

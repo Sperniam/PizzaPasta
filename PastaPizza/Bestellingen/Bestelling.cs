@@ -1,4 +1,6 @@
-﻿namespace PastaPizza.Bestellingen;
+﻿using System.Text;
+
+namespace PastaPizza.Bestellingen;
 using Gerechten;
 using Dranken;
 using Klanten;
@@ -16,33 +18,31 @@ public class Bestelling : IBedrag
 
     public int Aantal { get; }
 
-
-    public Bestelling(BesteldGerecht besteldGerecht, int aantal = 1) // Als er geen Dranken of Desserts zijn = Null
+    public Bestelling(Klant klant, Dessert dessert, int aantal = 1): this(klant,null,null,dessert,aantal)
+    {
+        
+    }
+    
+    
+    
+    public Bestelling(Klant klant, Drank dranken, int aantal = 1) : this(klant,null,dranken,null,aantal)
+    {
+      
+    }
+    public Bestelling(BesteldGerecht besteldGerecht, int aantal = 1) : this (null,besteldGerecht,null,null,aantal)
     {
         Klant = new Klant("Onbekend");
-        BesteldGerecht = besteldGerecht;
-        Dranken = null;
-        Dessert = null;
-        Aantal = aantal;
     }
 
-    public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, int aantal = 1)
+    public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, int aantal = 1) : this(klant,besteldGerecht,dranken,null,aantal)
     {
-        Klant = klant;
-        BesteldGerecht = besteldGerecht;
-        Dranken = dranken;
-        Aantal = aantal;
+       
     }
-
-    public Bestelling(Klant klant, Dessert dessert, int aantal = 1)
+    public Bestelling(Klant klant, Drank dranken, Dessert dessert, int aantal = 1)  : this (klant,null,dranken,dessert,aantal)
     {
-        Klant = klant;
-        Dessert = dessert;
-        Aantal = aantal;
+       
     }
-
-
-    public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, Dessert dessert, int aantal = 1)
+    public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, Dessert dessert, int aantal = 1) 
     {
         Klant = klant;
         BesteldGerecht = besteldGerecht;
@@ -51,53 +51,27 @@ public class Bestelling : IBedrag
         Aantal = aantal;
     }
 
-    public Bestelling(Klant klant, Drank dranken, Dessert dessert, int aantal = 1)
-    {
-        Klant = klant;
-        Dranken = dranken;
-        Dessert = dessert;
-        Aantal = aantal;
-    }
-
-    public Bestelling(Klant klant, Drank dranken, int aantal = 1)
-    {
-        Klant = klant;
-        Dranken = dranken;
-        Aantal = aantal;
-    }
 
     public override string ToString()
     {
-        //Waarom kunnen ze niet Null zijn ookal dat ik ze in de andere constructor op Null zet? (Meer opzoeken)
-        if (Dranken != null && Dessert != null)
-        {
-            return $"Klant: {Klant.Naam}\n" +
-                   $"Gerecht: {BesteldGerecht} \n" +
-                   $"Drank: {Dranken.NaamDrank} ({Dranken.BerekenBedrag()} euro)\n"  +
-                   $"Dessert: {Dessert.Dessertje} ({Dessert.BerekenBedrag()} euro)\n" +
-                   $"Aantal: {Aantal}\n" +
-                   $"Bedrag van deze bestelling: {BerekenBedrag()} euro";
-        } else if (Dessert != null)
-        {
-            return $"Klant: {Klant.Naam}\n" +
-                   $"Gerecht: {BesteldGerecht} \n" +
-                   $"Dessert: {Dessert.Dessertje} ({Dranken.BerekenBedrag()} euro)\n" +
-                   $"Aantal: {Aantal}\n" +
-                   $"Bedrag van deze bestelling: {BerekenBedrag()} euro";
-        } else if (Dranken != null)
-        {
-            return $"Klant: {Klant.Naam}\n" +
-                   $"Gerecht: {BesteldGerecht} \n" +
-                   $"Drank: {Dranken.NaamDrank} ({Dranken.BerekenBedrag()} euro)\n" +
-                   $"Aantal: {Aantal}\n" +
-                   $"Bedrag van deze bestelling: {BerekenBedrag()} euro";
-        }
-        
-        return $"Klant: {Klant.Naam}\n" +
-                 $"Gerecht:{BesteldGerecht} \n" +
-                 $"Aantal: {Aantal}\n" +
-                 $"Bedrag van deze bestelling: {BerekenBedrag()} euro";
+        var sb = new StringBuilder();
+        sb.AppendLine($"Klant: {Klant.Naam}");
+
+        if (BesteldGerecht != null)
+            sb.AppendLine($"Gerecht: {BesteldGerecht}");
+
+        if (Dranken != null)
+            sb.AppendLine($"Drank: {Dranken.NaamDrank} ({Dranken.BerekenBedrag()} euro)");
+
+        if (Dessert != null)
+            sb.AppendLine($"Dessert: {Dessert.Dessertje} ({Dessert.BerekenBedrag()} euro)");
+
+        sb.AppendLine($"Aantal: {Aantal}");
+        sb.AppendLine($"Bedrag van deze bestelling: {BerekenBedrag()} euro");
+
+        return sb.ToString().TrimEnd();
     }
+
     
 
     public double BerekenBedrag()

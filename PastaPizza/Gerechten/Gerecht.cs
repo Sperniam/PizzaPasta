@@ -9,11 +9,11 @@ public abstract class Gerecht : IBedrag
     public string Naam { get; set; }
 
     public double Prijs { get; set; }
-
+    
 
     public override string ToString()
     {
-        return "";
+        return $"{Naam} ({Prijs} euro)";
     }
 
     public abstract double BerekenBedrag();

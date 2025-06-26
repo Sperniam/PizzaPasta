@@ -4,7 +4,7 @@ public class Pizza : Gerecht
 {
     public List<string> Onderdelen { get; set; }
     
-    public Pizza(List<string> onderdelen, string naam, double prijs)
+    public Pizza(string naam,List<string> onderdelen, double prijs)
     {
         Onderdelen = onderdelen;
         Naam = naam;
@@ -21,7 +21,7 @@ public class Pizza : Gerecht
         }
 
         onderdelenLijst = onderdelenLijst.Remove(onderdelenLijst.Length - 2);        
-        return $"{Naam} ({BerekenBedrag()} euro) {onderdelenLijst}";
+        return $"{base.ToString()} {onderdelenLijst}";
     }
 
     public override double BerekenBedrag()
