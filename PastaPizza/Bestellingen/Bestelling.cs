@@ -67,7 +67,7 @@ public class Bestelling : IBedrag
             sb.AppendLine($"Dessert: {Dessert.Dessertje} ({Dessert.BerekenBedrag()} euro)");
 
         sb.AppendLine($"Aantal: {Aantal}");
-        sb.AppendLine($"Bedrag van deze bestelling: {BerekenBedrag()} euro");
+        sb.AppendLine($"Bedrag van deze bestelling: {BerekenBedrag().ToString("#.00")} euro");
 
         return sb.ToString().TrimEnd();
     }
