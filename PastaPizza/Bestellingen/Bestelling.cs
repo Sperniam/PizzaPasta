@@ -23,25 +23,20 @@ public class Bestelling : IBedrag
         
     }
     
-    
-    
     public Bestelling(Klant klant, Drank dranken, int aantal = 1) : this(klant,null,dranken,null,aantal)
     {
       
     }
     public Bestelling(BesteldGerecht besteldGerecht, int aantal = 1) : this (null,besteldGerecht,null,null,aantal)
     {
-        Klant = new Klant("Onbekend");
+        Klant = new Klant("Onbekende Klant");
     }
 
     public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, int aantal = 1) : this(klant,besteldGerecht,dranken,null,aantal)
     {
        
     }
-    public Bestelling(Klant klant, Drank dranken, Dessert dessert, int aantal = 1)  : this (klant,null,dranken,dessert,aantal)
-    {
-       
-    }
+  
     public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, Dessert dessert, int aantal = 1) 
     {
         Klant = klant;
