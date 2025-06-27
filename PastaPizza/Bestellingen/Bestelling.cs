@@ -83,6 +83,7 @@ public class Bestelling : IBedrag
         double dessertBedrag = Dessert?.BerekenBedrag() ?? 0;
         
         totaal += gerechtBedrag+drankBedrag+dessertBedrag;
+        totaal *= Aantal;
         
 
         if (dessertBedrag > 0 && gerechtBedrag > 0 && drankBedrag > 0 && dessertBedrag > 0)
