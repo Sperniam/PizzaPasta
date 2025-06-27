@@ -161,7 +161,13 @@ Console.WriteLine("Bestellingen gegroepeerd per klant\n*************************
 //Grouped Klanten
 foreach (var groep in bestellingen.GroupBy(b => b.Klant.Naam))
 {
-       Console.WriteLine($"Bestellingen van klant: {groep.Key}\n");
+    if (groep.Key != "Onbekende Klant")
+        Console.WriteLine($"Bestellingen van klant: {groep.Key}\n");
+
+    else
+        Console.WriteLine($"Onbekende Klanten: \n");
+    
+      
     foreach (var bestelling in groep)
     {
         
