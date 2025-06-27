@@ -170,7 +170,7 @@ foreach (var groep in bestellingen.GroupBy(b => b.Klant.Naam))
 
     }
     double totaalBedrag = groep.Sum(b => b.BerekenBedrag());
-    Console.WriteLine($"Totaal bedrag van alle bestellingen van klant {groep.Key}: {totaalBedrag.ToString("#.00")} euro");
+    Console.WriteLine($"Het totaal bedrag van alle bestellingen van klant {groep.Key}: {totaalBedrag.ToString("#.00")} euro");
     Console.WriteLine("------------------------------------------------------------------------------\n");
 }
 

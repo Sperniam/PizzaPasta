@@ -88,7 +88,6 @@ public class Bestelling : IBedrag
 
         if (dessertBedrag > 0 && gerechtBedrag > 0 && drankBedrag > 0 && dessertBedrag > 0)
         {
-            totaal *= Aantal;
             totaal *= 0.9;
 
         }
