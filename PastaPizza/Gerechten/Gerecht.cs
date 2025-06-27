@@ -13,7 +13,7 @@ public abstract class Gerecht : IBedrag
 
     public override string ToString()
     {
-        return $"{Naam} ({Prijs} euro)";
+        return $"{Naam} ({Prijs.ToString("#.00")} euro)";
     }
 
     public abstract double BerekenBedrag();

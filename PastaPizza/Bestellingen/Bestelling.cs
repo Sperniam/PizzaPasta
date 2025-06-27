@@ -56,10 +56,10 @@ public class Bestelling : IBedrag
             sb.AppendLine($"Gerecht: {BesteldGerecht}");
 
         if (Dranken != null)
-            sb.AppendLine($"Drank: {Dranken.NaamDrank} ({Dranken.BerekenBedrag()} euro)");
+            sb.AppendLine($"Drank: {Dranken.NaamDrank} ({Dranken.BerekenBedrag().ToString("#.0")} euro)");
 
         if (Dessert != null)
-            sb.AppendLine($"Dessert: {Dessert.Dessertje} ({Dessert.BerekenBedrag()} euro)");
+            sb.AppendLine($"Dessert: {Dessert.Dessertje} ({Dessert.BerekenBedrag().ToString("#.0")} euro)");
 
         sb.AppendLine($"Aantal: {Aantal}");
         sb.AppendLine($"Bedrag van deze bestelling: {BerekenBedrag().ToString("#.00")} euro");

@@ -31,6 +31,6 @@ public class Dessert : IBedrag
 
     public override string ToString()
     {
-        return $"Dessert: {Dessertje} ({Prijs} euro)";
+        return $"Dessert: {Dessertje} ({Prijs.ToString("#.0")} euro)";
     }
 }
