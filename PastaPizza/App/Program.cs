@@ -156,7 +156,7 @@ foreach (Bestelling bestelling in bestellingen)
 }
 
 
-Console.WriteLine("Bestellingen gegroepeerd per klant\n*****************************************************************************");
+Console.WriteLine("Bestellingen gegroepeerd per klant\n*****************************************************************************\n");
 
 //Grouped Klanten
 foreach (var groep in bestellingen.GroupBy(b => b.Klant.Naam))
@@ -170,8 +170,7 @@ foreach (var groep in bestellingen.GroupBy(b => b.Klant.Naam))
         Console.WriteLine($"Totaal bedrag van alle bestellingen van klant {bestelling.Klant.Naam}: {bestelling.BerekenBedrag().ToString("#.00")} euro");
 
     }
-    Console.WriteLine("------------------------------------------------------------------------------");
-    Console.WriteLine(); 
+    Console.WriteLine("------------------------------------------------------------------------------\n");
 }
 
 
