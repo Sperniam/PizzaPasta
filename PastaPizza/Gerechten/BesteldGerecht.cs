@@ -24,22 +24,16 @@ public class BesteldGerecht : IBedrag
         Grootte = grootte;
     }
     
-    
-
     public override string ToString()
     {
-        string extrasStr=" ";
-        
         if (Extras.Count > 0)
         {
-            foreach (Extras extra in Extras)
-            {
-                extrasStr += extra + " ";
-            }  
-            return $"{Gerecht} ({Grootte}) extra:{extrasStr} (bedrag: {BerekenBedrag()} euro)";
-        } 
+            string extrasStr = string.Join(" ", Extras);
+            return $"{Gerecht} ({Grootte}) extra: {extrasStr} (bedrag: {BerekenBedrag()} euro)";
+        }
         return $"{Gerecht} ({Grootte}) (bedrag: {BerekenBedrag()} euro)";
     }
+
 
     public double BerekenBedrag()
     {

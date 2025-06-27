@@ -1,5 +1,4 @@
-﻿using PastaPizza;
-using PastaPizza.Bestellingen;
+﻿using PastaPizza.Bestellingen;
 using PastaPizza.Desserten;
 using PastaPizza.Dranken;
 using PastaPizza.Gerechten;
@@ -7,19 +6,18 @@ using PastaPizza.Gerechten.GerechtEnums;
 using PastaPizza.Klanten;
 
 
-
-
-
 int bestelNr = 1;
 
 //Klanten
-Klant klant1 = new Klant("Jan Janssen");
-Klant klant2 = new Klant("Piet Peeters");
+Klant klant1 = new Klant("Jan Janssen",1);
+Klant klant2 = new Klant("Piet Peeters",2);
+
+
 
 
 
 Console.WriteLine("Alle Bestelingen");
-Console.WriteLine("******************************************************************************");
+Bestelling.TekenSter();
 
 //Bestelling 1
 
@@ -90,12 +88,18 @@ Bestelling bestelling4 = new Bestelling(besteldGerecht4);
 
 //Bestelling 5
 
-Gerecht gerecht5 = new Pasta("Spaghetti Carbonara",13,"spek, roomsaus en parmezaanse kaas");
-Drank drank5 = new Frisdrank(PastaPizza.Dranken.DrankEnum.Drank.Cocacola);
-BesteldGerecht besteldGerecht5 = new BesteldGerecht(gerecht5,Grootte.Klein);
 
-Bestelling bestelling5 = new Bestelling(klant1,besteldGerecht5,drank5);
+    Gerecht gerecht5 = new Pasta("Spaghetti Carbonara",13,"spek, roomsaus en parmezaanse kaas");
+    Drank drank5 = new Frisdrank(PastaPizza.Dranken.DrankEnum.Drank.Koffie);
+    BesteldGerecht besteldGerecht5 = new BesteldGerecht(gerecht5,Grootte.Klein);
+
+    Bestelling bestelling5 = new Bestelling(klant1,besteldGerecht5,drank5);
+
+
 //--------------------------------------------------------------------------------------------
+
+
+
 
 
 //Bestelling 6
@@ -136,6 +140,8 @@ bestellingen.Add(bestelling6);
 bestellingen.Add(bestelling7);
 bestellingen.Add(bestelling8);
 
+
+
 // Alle bestellingen van iedereen
 foreach (Bestelling bestelling in bestellingen) 
 {
@@ -143,22 +149,20 @@ foreach (Bestelling bestelling in bestellingen)
     Console.WriteLine($"{bestelling}\n");
 }
 
-Console.WriteLine("-----------------------------------------------------------------------------------------------");
+Bestelling.TekenSter();
 Console.WriteLine("Bestellingen van de klant Jan Janssen"); // Enkel Jan Janssen
-Console.WriteLine("******************************************************************************");
 
 //Enkel Jan Janssen
-foreach (Bestelling bestelling in bestellingen)
+foreach (Bestelling bestelling in bestellingen.Where(b => b.Klant.Naam.Equals("Jan Janssen")))
 {
-    var enkelJan = bestelling.Klant.Naam.Equals("Jan Janssen");
-    if (enkelJan)
         Console.WriteLine($"{bestelling}\n");
 }
 
 
-Console.WriteLine("Bestellingen gegroepeerd per klant\n*****************************************************************************\n");
+Console.WriteLine($"Bestellingen gegroepeerd per klant\n");
+Bestelling.TekenSter();
 
-//Grouped Klanten
+//Grouped Klanten   
 foreach (var groep in bestellingen.GroupBy(b => b.Klant.Naam))
 {
     if (groep.Key != "Onbekende Klant")
@@ -178,9 +182,30 @@ foreach (var groep in bestellingen.GroupBy(b => b.Klant.Naam))
     double totaalBedrag = groep.Sum(b => b.BerekenBedrag());
     
     if (groep.Key != "Onbekende Klant")
-    Console.WriteLine($"Het totaal bedrag van alle bestellingen van klant {groep.Key}: {totaalBedrag.ToString("#.00")} euro");
-    Console.WriteLine("------------------------------------------------------------------------------\n");
+    Console.WriteLine($"\nHet totaal bedrag van alle bestellingen van klant {groep.Key}: {totaalBedrag.ToString("#.00")} euro");
+    Bestelling.TekenLijn();
+    
+    
+    
+    
+    // Exception Test
+    Console.WriteLine("EXCEPTION TEST:\n");
+    try
+    {
+        Drank drankTest = new Frisdrank(PastaPizza.Dranken.DrankEnum.Drank.Koffie);
+        InvalidDrankException invalid = new InvalidDrankException();
+        invalid.SoortDrank(drankTest.NaamDrank);
+        Bestelling bestelling = new Bestelling(klant1,drankTest);
+        bestellingen.Add(bestelling);
+    }
+    catch (InvalidDrankException e)
+    {
+        Console.WriteLine(e.Message);
+    }
+   
 }
+
+
 
 
 

@@ -30,8 +30,8 @@ public class Pasta : Gerecht
         return $"{base.ToString()} {Omschrijving}";
     }
 
-    public override double BerekenBedrag()
+    public double BerekenBedrag()
     {
-        return Prijs;
+      return base.BerekenBedrag();
     }
 }

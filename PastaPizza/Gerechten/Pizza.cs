@@ -13,19 +13,13 @@ public class Pizza : Gerecht
 
     public override string ToString()
     {
-        string onderdelenLijst = "";
-        foreach (string s in Onderdelen)
-        {
-            onderdelenLijst += s;
-            onderdelenLijst += " - ";
-        }
-
-        onderdelenLijst = onderdelenLijst.Remove(onderdelenLijst.Length - 2);        
+        string onderdelenLijst = string.Join(" - ", Onderdelen);
+        
         return $"{base.ToString()} {onderdelenLijst}";
     }
 
-    public override double BerekenBedrag()
+    public double BerekenBedrag()
     {
-        return Prijs;
+        return base.BerekenBedrag();
     }
 }

@@ -8,10 +8,9 @@ public class Klant
     public Klant()
     {
         Naam = "Onbekende Klant";
-        KlantID++;
     }
 
-    public Klant(string naam)
+    public Klant(string naam, int klantID)
     {
         Naam = naam;
         KlantID++;

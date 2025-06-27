@@ -11,8 +11,9 @@ public class Frisdrank : Drank
     }
 
 
-    public override double BerekenBedrag()
+
+    public double BerekenBedrag()
     {
-        return Prijs;
+      return base.BerekenBedrag();
     }
 }

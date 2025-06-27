@@ -3,23 +3,27 @@ namespace PastaPizza.Desserten;
 
 public class Dessert : IBedrag
 {
-    public DessertenEnum.Dessert Dessertje { get; set; }
+    public DessertenEnum.Dessert Naam { get; set; }
 
-    public Dessert(DessertenEnum.Dessert dessertje)
+    public Dessert(DessertenEnum.Dessert naam)
     {
-        Dessertje = dessertje;
+        Naam = naam;
     }
 
-        public double Prijs { get { if (Dessertje == DessertenEnum.Dessert.Tiramisu || Dessertje == DessertenEnum.Dessert.Ijs)
-        {
-            return 3;
-        }
-        else if (Dessertje == DessertenEnum.Dessert.Cake)
-        {
-            return 2;
-        }
+    public double Prijs
+    {
+        get {
+            if (Naam == DessertenEnum.Dessert.Tiramisu || Naam == DessertenEnum.Dessert.Ijs)
+            {
+                return 3;
+            } if (Naam == DessertenEnum.Dessert.Cake)
+            {
+                return 2;
+            }
 
-        return 0;} }
+            return 0;
+        }
+    }
     
     
 
@@ -31,6 +35,6 @@ public class Dessert : IBedrag
 
     public override string ToString()
     {
-        return $"Dessert: {Dessertje} ({Prijs.ToString("#.0")} euro)";
+        return $"Dessert: {Naam} ({Prijs.ToString("#.0")} euro)";
     }
 }

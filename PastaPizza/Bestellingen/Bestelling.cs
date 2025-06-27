@@ -12,7 +12,7 @@ public class Bestelling : IBedrag
 
     public BesteldGerecht BesteldGerecht { get; set; }
 
-    public Drank Dranken { get; set; }
+    public Drank Drank { get; set; }
 
     public Dessert Dessert { get; set; }
 
@@ -23,25 +23,25 @@ public class Bestelling : IBedrag
         
     }
     
-    public Bestelling(Klant klant, Drank dranken, int aantal = 1) : this(klant,null,dranken,null,aantal)
+    public Bestelling(Klant klant, Drank drank, int aantal = 1) : this(klant,null,drank,null,aantal)
     {
       
     }
     public Bestelling(BesteldGerecht besteldGerecht, int aantal = 1) : this (null,besteldGerecht,null,null,aantal)
     {
-        Klant = new Klant("Onbekende Klant");
+        Klant = new Klant("Onbekende Klant",0);
     }
 
-    public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, int aantal = 1) : this(klant,besteldGerecht,dranken,null,aantal)
+    public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank drank, int aantal = 1) : this(klant,besteldGerecht,drank,null,aantal)
     {
        
     }
   
-    public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank dranken, Dessert dessert, int aantal = 1) 
+    public Bestelling(Klant klant, BesteldGerecht besteldGerecht, Drank drank, Dessert dessert, int aantal = 1) 
     {
         Klant = klant;
         BesteldGerecht = besteldGerecht;
-        Dranken = dranken;
+        Drank = drank;
         Dessert = dessert;
         Aantal = aantal;
     }
@@ -55,14 +55,14 @@ public class Bestelling : IBedrag
         if (BesteldGerecht != null)
             sb.AppendLine($"Gerecht: {BesteldGerecht}");
 
-        if (Dranken != null)
-            sb.AppendLine($"Drank: {Dranken.NaamDrank} ({Dranken.BerekenBedrag().ToString("#.0")} euro)");
+        if (Drank != null)
+            sb.AppendLine($"Drank: {Drank.NaamDrank} ({Drank.BerekenBedrag():#.00)} euro)");
 
         if (Dessert != null)
-            sb.AppendLine($"Dessert: {Dessert.Dessertje} ({Dessert.BerekenBedrag().ToString("#.0")} euro)");
+            sb.AppendLine($"Dessert: {Dessert.Naam} ({Dessert.BerekenBedrag():#.00} euro)");
 
         sb.AppendLine($"Aantal: {Aantal}");
-        sb.AppendLine($"Bedrag van deze bestelling: {BerekenBedrag().ToString("#.00")} euro");
+        sb.AppendLine($"Bedrag van deze bestelling: {BerekenBedrag():#.00} euro");
 
         return sb.ToString().TrimEnd();
     }
@@ -74,7 +74,7 @@ public class Bestelling : IBedrag
         double totaal = 0;
         
         double gerechtBedrag = BesteldGerecht?.BerekenBedrag() ?? 0;
-        double drankBedrag = Dranken?.BerekenBedrag() ?? 0;
+        double drankBedrag = Drank?.BerekenBedrag() ?? 0;
         double dessertBedrag = Dessert?.BerekenBedrag() ?? 0;
         
         totaal += gerechtBedrag+drankBedrag+dessertBedrag;
@@ -90,6 +90,15 @@ public class Bestelling : IBedrag
 
     }
     
-    
-    
+    public static void TekenLijn()
+    {
+            Console.WriteLine("-------------------------------------------------------------------------------------------");
+        
+    }
+
+    public static void TekenSter()
+    {
+            Console.WriteLine("*******************************************************************************************");
+
+    }
 }

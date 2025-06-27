@@ -8,9 +8,12 @@ public abstract class Drank : IBedrag
 
     public DrankEnum.Drank NaamDrank { get; set; }
 
-    public double Prijs { get; set; }
+    public double Prijs { get; init; }
 
-    public abstract double BerekenBedrag();
+    public double BerekenBedrag()
+    {
+        return Prijs;
+    }
 
     public override string ToString()
     {
